@@ -109,6 +109,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interactuar"",
+                    ""type"": ""Button"",
+                    ""id"": ""17363cf8-9be6-47d2-8d42-35a6326a4736"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -177,6 +186,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Rotar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f7ed3f6-2e5d-4df4-aa02-7ef631e330b6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interactuar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +207,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Personaje = asset.FindActionMap("Personaje", throwIfNotFound: true);
         m_Personaje_Mover = m_Personaje.FindAction("Mover", throwIfNotFound: true);
         m_Personaje_Rotar = m_Personaje.FindAction("Rotar", throwIfNotFound: true);
+        m_Personaje_Interactuar = m_Personaje.FindAction("Interactuar", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -269,6 +290,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPersonajeActions> m_PersonajeActionsCallbackInterfaces = new List<IPersonajeActions>();
     private readonly InputAction m_Personaje_Mover;
     private readonly InputAction m_Personaje_Rotar;
+    private readonly InputAction m_Personaje_Interactuar;
     /// <summary>
     /// Provides access to input actions defined in input action map "Personaje".
     /// </summary>
@@ -288,6 +310,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Personaje/Rotar".
         /// </summary>
         public InputAction @Rotar => m_Wrapper.m_Personaje_Rotar;
+        /// <summary>
+        /// Provides access to the underlying input action "Personaje/Interactuar".
+        /// </summary>
+        public InputAction @Interactuar => m_Wrapper.m_Personaje_Interactuar;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -320,6 +346,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Rotar.started += instance.OnRotar;
             @Rotar.performed += instance.OnRotar;
             @Rotar.canceled += instance.OnRotar;
+            @Interactuar.started += instance.OnInteractuar;
+            @Interactuar.performed += instance.OnInteractuar;
+            @Interactuar.canceled += instance.OnInteractuar;
         }
 
         /// <summary>
@@ -337,6 +366,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Rotar.started -= instance.OnRotar;
             @Rotar.performed -= instance.OnRotar;
             @Rotar.canceled -= instance.OnRotar;
+            @Interactuar.started -= instance.OnInteractuar;
+            @Interactuar.performed -= instance.OnInteractuar;
+            @Interactuar.canceled -= instance.OnInteractuar;
         }
 
         /// <summary>
@@ -391,5 +423,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRotar(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interactuar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteractuar(InputAction.CallbackContext context);
     }
 }
