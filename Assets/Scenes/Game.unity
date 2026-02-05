@@ -7491,11 +7491,12 @@ Transform:
   m_GameObject: {fileID: 607847015}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.27907, y: 2, z: -10.69532}
+  m_LocalPosition: {x: -3.6, y: 2, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 518347299}
+  - {fileID: 976899910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &607847021
@@ -7675,8 +7676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20eb3edd4d4317943916d96e887c631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AtaquePersonaje
-  m_Cam: {fileID: 518347302}
-  Dano: 5
+  Camara: {fileID: 518347302}
+  m_Bala: {fileID: 2455063146454339823, guid: 031dc221c83b78249b76613d13f1a1f7, type: 3}
+  m_SpawnBala: {fileID: 976899910}
 --- !u!1001 &611550672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12179,6 +12181,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5351694363365410482, guid: 75b433e303e78484787b6be159ae35de, type: 3}
   m_PrefabInstance: {fileID: 975324107}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &976899909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976899910}
+  m_Layer: 0
+  m_Name: SpawnBala
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976899910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976899909}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 607847019}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &988072679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3284038602696172049, guid: 955a41142672fff479798c73df8881f1, type: 3}
@@ -15838,9 +15871,10 @@ GameObject:
   - component: {fileID: 1301482013}
   - component: {fileID: 1301482012}
   - component: {fileID: 1301482016}
+  - component: {fileID: 1301482017}
   m_Layer: 0
   m_Name: Enemigo
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15861,7 +15895,7 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -15933,7 +15967,7 @@ Transform:
   m_GameObject: {fileID: 1301482011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 7.39, y: 4.52, z: 3.39}
+  m_LocalPosition: {x: 6.67, y: 4.52, z: 3.39}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15952,6 +15986,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemigo
   vida: 100
+--- !u!54 &1301482017
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301482011}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1308810915
 PrefabInstance:
   m_ObjectHideFlags: 0

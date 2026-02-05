@@ -2,32 +2,28 @@ using UnityEngine;
 
 public class AtaquePersonaje : MonoBehaviour
 {
-    [SerializeField] private Camera m_Cam;
-    [SerializeField] private float Dano = 5;
+    [SerializeField] private Camera Camara;
+    [SerializeField] Bala m_Bala;
+    [SerializeField] Transform m_SpawnBala;
+    private float distanciaMax = 100f;
 
     private void Update()
     {
+        //No hacer nada si no se presiona clic
         if (!Input.GetMouseButtonDown(0)) { return; }
 
         //Creamos el rayo desde la camara hasta la posicion del mouse
-        Ray ray = m_Cam.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit; //Variable para almacenar la informacion del impacto
+        Ray ray = Camara.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
 
-        if (Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out RaycastHit hit, distanciaMax))
         {
-            //Si el rayo impacta con un objeto, obtenemos su transform
-            Transform obj = hit.transform;
-            Enemigo enemigo = obj.GetComponent<Enemigo>();
+            Vector3 direccion = ray.direction;
 
-            //Si el objeto tiene un componente enemigo y se persiona clic izquierdo, se activa el eveneto
-            if (enemigo != null)
-            {
-                Debug.Log("Enemigo detectado");
-                enemigo.RecibirDano(Dano);
-            }
+            Bala bala = PoolManager.Release(m_Bala.gameObject, m_SpawnBala.position, Quaternion.identity).GetComponent<Bala>();
+            bala.Inicializar(direccion);
+            StartCoroutine(bala.ContarTiempo(bala));
         }
     }
 }
