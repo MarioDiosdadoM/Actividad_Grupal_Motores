@@ -5,12 +5,9 @@ using TMPro;
 public class PulsaE : MonoBehaviour
 {
     public float distancia = 3f;
-
     public GameObject textoE;
     public TextMeshProUGUI textoPista;
-
     public InputActionReference interactuar;
-
     private Interactuable actual;
 
     void OnEnable()
@@ -40,26 +37,18 @@ public class PulsaE : MonoBehaviour
         if (Physics.Raycast(ray, out hit, distancia))
         {
             actual = hit.collider.GetComponent<Interactuable>();
-
-            if (actual != null)
-            {
+            if (actual != null)            {
                 textoE.SetActive(true);
-
                 if (interactuar.action.WasPressedThisFrame())
                 {
                     textoPista.text = actual.textoInteraccion();
                     textoPista.gameObject.SetActive(true);
                     actual.Interactuar();
                 }
-
                 return;
             }
-            
-
         }
-
         textoE.SetActive(false);
-        textoPista.gameObject.SetActive(false);
-        
+        textoPista.gameObject.SetActive(false);        
     }
 }

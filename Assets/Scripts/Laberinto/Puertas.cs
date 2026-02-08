@@ -4,7 +4,6 @@ public class Puertas : MonoBehaviour
 {
     public Transform posAbierta;
     public float velocidad = 2f;
-
     private Vector3 posCerrada;
     private bool abierta = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
