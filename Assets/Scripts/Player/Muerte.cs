@@ -5,7 +5,7 @@ public class Muerte : MonoBehaviour
     public static Muerte menu;
     public GameObject panelMuerte;
     [SerializeField] private AudioClip gameOverSong;
-    private AudioSource audioSource;
+    private AudioSource audioSource, audioSource2;
 
     private void Awake()
     {
@@ -16,6 +16,7 @@ public class Muerte : MonoBehaviour
         else Destroy(gameObject);
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = gameOverSong;
+        audioSource2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -24,6 +25,7 @@ public class Muerte : MonoBehaviour
 
     public void MostrarPanel()
     {
+        audioSource2.Stop();
         audioSource.Play(); //reproduce cancion de game over
         panelMuerte.SetActive(true);        
         Time.timeScale = 0f;       
@@ -33,7 +35,8 @@ public class Muerte : MonoBehaviour
     {
         audioSource.Stop();
         panelMuerte.SetActive(false);
-        Time.timeScale = 1f;        
+        Time.timeScale = 1f;
+        audioSource2.Play();
     }
 
     public void Abandonar()

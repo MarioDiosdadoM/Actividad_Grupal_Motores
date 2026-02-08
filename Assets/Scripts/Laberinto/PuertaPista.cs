@@ -4,7 +4,6 @@ public class PuertaPista : MonoBehaviour, Interactuable
 {
     [TextArea]
     public string textoPista;
-
     public void Interactuar()
     {
         Debug.Log("Pista mostrada");
