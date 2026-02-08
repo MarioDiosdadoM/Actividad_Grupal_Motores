@@ -25,12 +25,13 @@ public class Muerte : MonoBehaviour
     public void MostrarPanel()
     {
         audioSource.Play(); //reproduce cancion de game over
-        panelMuerte.SetActive(true);
+        panelMuerte.SetActive(true);        
         Time.timeScale = 0f;       
     }
 
     public void OcultarPanel()
     {
+        audioSource.Stop();
         panelMuerte.SetActive(false);
         Time.timeScale = 1f;        
     }

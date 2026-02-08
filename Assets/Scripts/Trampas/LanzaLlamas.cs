@@ -5,17 +5,14 @@ public class LanzaLlamas : MonoBehaviour, Interfaztrampas
 {
     private ParticleSystem llamas;
     private Collider peligro;
-
     public float tiempoEncendido = 2f;
     public float tiempoApagado = 2f;
-
     private bool activa = true;
 
     private void Awake()
     {
         llamas = GetComponent<ParticleSystem>();
         peligro = GetComponent<Collider>();
-
         peligro.enabled = false;
     }
     void Start()
@@ -58,14 +55,11 @@ public class LanzaLlamas : MonoBehaviour, Interfaztrampas
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Contacto con lanzallamas");
-
         if (other.CompareTag("Jugador"))
         {
-            Respawn reaparicion = other.GetComponent<Respawn>();
-
-            if (reaparicion != null)
+            if (other.TryGetComponent<SistemaVida>(out var reaparicion))
             {
-                reaparicion.Morir();
+                reaparicion.GetHit(5);
             }
         }
     }

@@ -6,33 +6,24 @@ public class Estatuas : MonoBehaviour, Interactuable
 {
     [Header("Puertas que controla")]
     public Puertas[] puertas;
-
     [Header("Texto")]
     [TextArea] public string textoPre = "¿Quieres abrir el paso?";
     [TextArea] public string textoAct = "La puerta esta abierta";
-
     [Header("Feedback")]
     public TextMeshProUGUI textoPista;
     public float temporizador = 3f;
-
     public MonoBehaviour[] trampa;
-
     private bool activada = false;
     
     public void Interactuar()
     {
         if (activada) return;
-
         activada = true;
-
         foreach (MonoBehaviour t in trampa)
         {
-
             Interfaztrampas trampa = t as Interfaztrampas;
             if (t != null) trampa.Desactivar();
-
         }
-
 
         foreach (Puertas puerta in puertas)
         {
@@ -53,12 +44,8 @@ public class Estatuas : MonoBehaviour, Interactuable
     private IEnumerator MostrarAviso(string mensaje, float duracion)
     {
         textoPista.text = mensaje;
-        textoPista.gameObject.SetActive(true);
-        
-
+        textoPista.gameObject.SetActive(true);   
         yield return new WaitForSeconds(duracion);
-
-        textoPista.gameObject.SetActive(false);
-      
+        textoPista.gameObject.SetActive(false);      
     }
 }

@@ -5,14 +5,11 @@ public class Pinchos : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Contacto con pinchos");
-
         if (other.CompareTag("Jugador"))
         {
-            Respawn reaparicion = other.GetComponent<Respawn>();
-
-            if (reaparicion != null)
+            if (other.TryGetComponent<SistemaVida>(out var reaparicion))
             {
-                reaparicion.Morir();
+                reaparicion.GetHit(100);
             }
         }
     }

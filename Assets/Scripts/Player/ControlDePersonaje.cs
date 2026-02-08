@@ -33,6 +33,7 @@ public class ControlDePersonaje : MonoBehaviour
         controlador.Move(move * Time.deltaTime);
         if (!audioSource.isPlaying && moverInput != 0 && Time.timeScale != 0) //sonido pasos
         {
+            audioSource.clip = pasos;
             audioSource.Play();
         }
     }
