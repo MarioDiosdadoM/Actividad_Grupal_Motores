@@ -3,8 +3,9 @@ using UnityEngine;
 public class Muerte : MonoBehaviour
 {
     public static Muerte menu;
-
     public GameObject panelMuerte;
+    [SerializeField] private AudioClip gameOverSong;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -13,24 +14,25 @@ public class Muerte : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = gameOverSong;
     }
     void Start()
     {
-        panelMuerte.SetActive(false);
+        panelMuerte.SetActive(false);        
     }
 
     public void MostrarPanel()
     {
+        audioSource.Play(); //reproduce cancion de game over
         panelMuerte.SetActive(true);
-        Time.timeScale = 0f;
-        
+        Time.timeScale = 0f;       
     }
 
     public void OcultarPanel()
     {
         panelMuerte.SetActive(false);
-        Time.timeScale = 1f;
-        
+        Time.timeScale = 1f;        
     }
 
     public void Abandonar()

@@ -6,7 +6,6 @@ public class PasosPersonaje : MonoBehaviour
     public AudioSource pasosArena;
     public AudioClip[] pasos;
     public float intervaloPasos = 0.5f;
-
     private float pasosTiempo = 0f;
     private CharacterController controlador;
 
@@ -20,7 +19,6 @@ public class PasosPersonaje : MonoBehaviour
         if (controlador.velocity.magnitude > 0.2f && controlador.isGrounded)
         {
             pasosTiempo -= Time.deltaTime;
-
             if (pasosTiempo <= 0)
             {
                 pasosArena.PlayOneShot(pasos[Random.Range(0, pasos.Length)]);
