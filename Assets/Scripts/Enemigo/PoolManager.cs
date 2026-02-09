@@ -49,7 +49,7 @@ public static class PoolManager
         }
         else
         {
-            //Si el objeto no pertence a ningún pool, se destruye
+            //Si el objeto no pertence a ningï¿½n pool, se destruye
             Object.Destroy(obj);
         }
     }
