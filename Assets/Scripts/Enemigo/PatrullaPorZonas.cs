@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,9 +9,17 @@ public class PatrullaPorZonas : MonoBehaviour
     public float radioPatrulla = 20f;
     public float tiempoEspera = 0.5f;
 
+    public float radioVision = 8f;
+    public LayerMask layerJugador;
+
+    public float radioPerdida = 20f;
+
     private NavMeshAgent agente;
     private float espera;
     private bool esperando;
+
+    private Transform target;
+    private bool persiguiendo = false;
 
     void Start()
     {
@@ -21,10 +30,52 @@ public class PatrullaPorZonas : MonoBehaviour
     
     void Update()
     {
+        if (!persiguiendo) { DetectarJugador(); }
+        else { PerderJugador(); }
+
+
+        if (persiguiendo) { agente.SetDestination(target.position); }
+        else { Patrullar(); }      
+    }
+
+    void DetectarJugador()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, radioVision, layerJugador);
+
+        if (hits.Length > 0)
+        {
+            target = hits[0].transform;
+            persiguiendo = true;
+            esperando = false;
+        }
+
+    }
+
+    void PerderJugador()
+    {
+        if (target == null)
+        {
+            DejarPerseguir();
+            return;
+        }
+
+        float distancia = Vector3.Distance(transform.position, target.position);
+        if (distancia > radioPerdida) { DejarPerseguir(); }
+    }
+
+    void DejarPerseguir()
+    {
+        persiguiendo = false;
+        target = null;
+        IrAPuntoAleatorio();
+    }
+
+    void Patrullar()
+    {
         if (!agente.pathPending && agente.remainingDistance < 0.5f)
         {
-            if (!esperando) 
-            { 
+            if (!esperando)
+            {
                 esperando = true;
                 espera = tiempoEspera;
             }
@@ -33,7 +84,7 @@ public class PatrullaPorZonas : MonoBehaviour
         if (esperando)
         {
             espera -= Time.deltaTime;
-            if(espera <= 0f)
+            if (espera <= 0f)
             {
                 esperando = false;
                 IrAPuntoAleatorio();

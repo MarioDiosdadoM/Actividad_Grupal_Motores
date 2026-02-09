@@ -8791,6 +8791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puerta 3 (noroeste)
       objectReference: {fileID: 0}
+    - target: {fileID: 687171469403962615, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2661548679442644718, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
       propertyPath: textoPista
       value: El Sabio reflexiona al Noroeste
@@ -10236,6 +10240,10 @@ PrefabInstance:
     - target: {fileID: 687171469403962615, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
       propertyPath: m_Name
       value: Puerta 2 (suroeste)
+      objectReference: {fileID: 0}
+    - target: {fileID: 687171469403962615, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2661548679442644718, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
       propertyPath: textoPista
@@ -26934,6 +26942,10 @@ PrefabInstance:
     - target: {fileID: 687171469403962615, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
       propertyPath: m_Name
       value: Puerta 1 (sureste)
+      objectReference: {fileID: 0}
+    - target: {fileID: 687171469403962615, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3246218060866170672, guid: a6cf5022fbdff43479665a9eb3e5f5d4, type: 3}
       propertyPath: posAbierta

@@ -94,6 +94,11 @@ MonoBehaviour:
   centroZona: {fileID: 0}
   radioPatrulla: 20
   tiempoEspera: 0.5
+  radioVision: 8
+  layerJugador:
+    serializedVersion: 2
+    m_Bits: 8
+  radioPerdida: 20
 --- !u!1001 &6420968413236145427
 PrefabInstance:
   m_ObjectHideFlags: 0
