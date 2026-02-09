@@ -5651,7 +5651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mainmenu
   cam: {fileID: 1193669948}
-  clip: {fileID: 8300000, guid: f246734c58e662b46b914af7b827102d, type: 3}
+  clip: {fileID: 8300000, guid: 1d0d4f730ad386e4993dfb6d79105651, type: 3}
 --- !u!114 &998740678
 MonoBehaviour:
   m_ObjectHideFlags: 0
