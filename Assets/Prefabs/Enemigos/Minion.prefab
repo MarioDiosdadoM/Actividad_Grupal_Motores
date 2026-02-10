@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5827549950142171870}
   - component: {fileID: -354058663792419039}
   m_Layer: 0
-  m_Name: Monster13_01
+  m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

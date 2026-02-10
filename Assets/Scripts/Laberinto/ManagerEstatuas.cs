@@ -9,8 +9,11 @@ public class ManagerEstatuas : MonoBehaviour
     [Header("Spawn del boss")]
     public GameObject bossPrefab;
     public Transform puntoAparicion;
+    public Transform[] bossPuntosPatrulla;
 
     private bool bossSpawned = false;
+
+    public Avisoboss aviso;
 
     public void EstatuaActivada()
     {
@@ -22,7 +25,12 @@ public class ManagerEstatuas : MonoBehaviour
     void SpawnearBoss()
     {
         bossSpawned = true;
-        Instantiate(bossPrefab, puntoAparicion.position, puntoAparicion.rotation);
+        GameObject boss = Instantiate(bossPrefab, puntoAparicion.position, puntoAparicion.rotation);
+
+        if (aviso != null) { aviso.iniciarAviso(); }
+
+        Patrulla patrulla = boss.GetComponent<Patrulla>();
+        patrulla.EstablecerPatrulla(bossPuntosPatrulla);
     }
     
 }

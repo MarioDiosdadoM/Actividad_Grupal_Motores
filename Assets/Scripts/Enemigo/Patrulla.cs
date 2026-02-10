@@ -61,6 +61,12 @@ public class Patrulla : MonoBehaviour
         Patrullar();
     }
 
+    public void EstablecerPatrulla(Transform[] puntos)
+    {
+        puntosPatrulla = puntos;
+        puntoActual = 0;
+    }
+
     void Patrullar()
     {
         if (!agente.pathPending && agente.remainingDistance < 0.5f)
