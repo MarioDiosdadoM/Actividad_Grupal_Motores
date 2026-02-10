@@ -9,7 +9,7 @@ public class Enemigo : MonoBehaviour
         spawnPos = transform.position;
     }
 
-    //Método para que el enemigo pierda vida y vuelva a su punto de spawn al llegar a 0 de vida
+    //Mï¿½todo para que el enemigo pierda vida y vuelva a su punto de spawn al llegar a 0 de vida
     public void RecibirDano(float dano)
     {
         vida -= dano;
