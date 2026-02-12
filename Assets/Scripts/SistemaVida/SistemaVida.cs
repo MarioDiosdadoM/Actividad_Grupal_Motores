@@ -8,10 +8,11 @@ public class SistemaVida : MonoBehaviour
     [SerializeField] private AudioClip hit;
     private AudioSource audioSource;
     public static int vida = 100;
-
+    private Animator animator;
     public void Awake()
     {
-        audioSource = GetComponent<AudioSource>();        
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Reaparecer()
@@ -32,6 +33,7 @@ public class SistemaVida : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = hit;       
         audioSource.Play();
+        animator.SetTrigger("dolor");
         if (vida <= 0)
         {
             audioSource.Stop();

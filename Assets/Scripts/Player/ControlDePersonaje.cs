@@ -10,18 +10,24 @@ public class ControlDePersonaje : MonoBehaviour
     public float velocidadRotacion = 100f;   //Variable para modificar la velocidad de rotación desde el inspector
     private CharacterController controlador;     
     private PlayerControls controles;
-    
+    Animator animator;
     void Awake()
     {
         controlador = GetComponent < CharacterController >();
         controles = new PlayerControls();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = pasos;
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnEnable() => controles.Enable();
     private void OnDisable() => controles.Disable();
+    private void UpdateAnimation()
+    {
 
+        animator.SetBool("walking", controlador.velocity.magnitude > 0.1f);
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +37,7 @@ public class ControlDePersonaje : MonoBehaviour
         transform.Rotate(0f, rotarInput * velocidadRotacion * Time.deltaTime, 0f);
         Vector3 move = transform.forward * moverInput * velocidadMovimiento;
         controlador.Move(move * Time.deltaTime);
+        UpdateAnimation();
         if (!audioSource.isPlaying && moverInput != 0 && Time.timeScale != 0) //sonido pasos
         {
             audioSource.clip = pasos;
