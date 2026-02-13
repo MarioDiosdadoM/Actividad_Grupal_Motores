@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bala
   Velocidad: 15
-  Dano: 5
-  Tiempo: 5
+  Dano: 20
+  Tiempo: 10
 --- !u!54 &-4586039397728331330
 Rigidbody:
   m_ObjectHideFlags: 0
