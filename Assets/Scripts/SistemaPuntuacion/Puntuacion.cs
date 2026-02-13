@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-/* Autor: Daniel Heras Durán
+/* Autor: Daniel Heras Duran
  * Esta clase sirve para manejar el contador de vida del sistema de vida.
  */
 
@@ -17,6 +17,6 @@ public class Puntuacion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        texto.text = "Puntuación: " + SistemaPuntuacion.puntuacion;
+        texto.text = "Puntos: " + SistemaPuntuacion.puntuacion;
     }
 }

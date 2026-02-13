@@ -4,7 +4,7 @@ using UnityEngine;
 public class Bala : MonoBehaviour
 {
     [SerializeField] private float Velocidad = 15;
-    [SerializeField] private float Dano = 5;
+    [SerializeField] private float Dano = 10;
     [SerializeField] private float Tiempo = 5;
 
     private Vector3 Direccion;
@@ -16,10 +16,13 @@ public class Bala : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        Enemigo enemigo = col.GetComponent<Enemigo>();
-        if (enemigo != null)
+        if (col.TryGetComponent<Enemigo>(out var enemigo))
         {
-            enemigo.RecibirDano(Dano);
+            enemigo.RecibirDano(Dano);            
+        }
+        if (col.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+        {
+            sistemaPuntos.Puntuar(20);
         }
         StopCoroutine(ContarTiempo(this));
         PoolManager.ReturnToPool(gameObject);

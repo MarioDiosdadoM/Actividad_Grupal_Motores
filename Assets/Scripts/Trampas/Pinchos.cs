@@ -11,6 +11,10 @@ public class Pinchos : MonoBehaviour
             {
                 reaparicion.GetHit(100);
             }
+            if (other.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+            {
+                sistemaPuntos.QuitarPuntos(10);
+            }
         }
     }
 }

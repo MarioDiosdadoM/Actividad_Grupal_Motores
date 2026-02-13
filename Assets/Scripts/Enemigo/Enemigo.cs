@@ -1,16 +1,18 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 public class Enemigo : MonoBehaviour
 {
     [SerializeField] protected float vida = 100;
-    [SerializeField] protected int dano = 5;
+    [SerializeField] protected int dano = 15;
 
     protected void OnTriggerEnter(Collider col)
     {
-        SistemaVida sitemaVida = col.gameObject.GetComponent<SistemaVida>();
-        if (sitemaVida != null)
+        if (col.gameObject.TryGetComponent<SistemaVida>(out var sitemaVida))
         {
-            sitemaVida.GetHit(dano);
+            sitemaVida.GetHit(dano);            
+        }
+        if (col.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+        {
+            sistemaPuntos.QuitarPuntos(10);
         }
     }
 
