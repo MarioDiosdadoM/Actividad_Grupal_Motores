@@ -3,6 +3,7 @@ public class Enemigo : MonoBehaviour
 {
     [SerializeField] protected float vida = 100;
     [SerializeField] protected int dano = 15;
+    private GameObject puntos;
 
     protected void OnTriggerEnter(Collider col)
     {
@@ -23,10 +24,8 @@ public class Enemigo : MonoBehaviour
         Debug.Log("Enemigo ha recibido " + dano + " de Dano. Le queda " + vida + " de vida.");
         if (vida <= 0) 
         {
-            if (gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
-            {
-                sistemaPuntos.Puntuar(20);
-            }
+            puntos = GameObject.FindWithTag("Jugador");
+            puntos.GetComponent<SistemaPuntuacion>().Puntuar(50);
             Destroy(gameObject);
         }
     }
