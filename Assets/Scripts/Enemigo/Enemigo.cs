@@ -13,6 +13,7 @@ public class Enemigo : MonoBehaviour
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 3.0f;
         audioSource.clip = clip;
     }
     protected void OnTriggerEnter(Collider col)
@@ -47,11 +48,12 @@ public class Enemigo : MonoBehaviour
     //Metodo para que el enemigo pierda vida y vuelva a su punto de spawn al llegar a 0 de vida
     public virtual void RecibirDano(float dano)
     {
-        vida -= dano;
+        vida -= dano;        
         audioSource.Play();
         Debug.Log("Enemigo ha recibido " + dano + " de Dano. Le queda " + vida + " de vida.");
         if (vida <= 0) 
         {
+            audioSource.Play();
             puntos = GameObject.FindWithTag("Jugador");
             puntos.GetComponent<SistemaPuntuacion>().Puntuar(50);
             Destroy(gameObject);
