@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class Bala : MonoBehaviour
 {
@@ -11,8 +9,6 @@ public class Bala : MonoBehaviour
 
     private Vector3 Direccion;
 
-    private static Dictionary<int, Queue<Bala>> Pool = new Dictionary<int, Queue<Bala>>();
-
     public void Inicializar(Vector3 dir)
     {
         Direccion = dir;
@@ -20,11 +16,10 @@ public class Bala : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log(col.CompareTag("Enemigo"));
-        if (col.CompareTag("Enemigo"))
+        Enemigo enemigo = col.GetComponent<Enemigo>();
+        if (enemigo != null)
         {
-            Enemigo enemigo = col.gameObject.GetComponent<Enemigo>();
-            enemigo.RecibirDano(Dano); 
+            enemigo.RecibirDano(Dano);
         }
         StopCoroutine(ContarTiempo(this));
         PoolManager.ReturnToPool(gameObject);
