@@ -59,7 +59,7 @@ public class LanzaLlamas : MonoBehaviour, Interfaztrampas
         {
             if (other.TryGetComponent<SistemaVida>(out var reaparicion))
             {
-                reaparicion.GetHit(5);
+                reaparicion.GetHit(20);
             }
             if (other.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
             {

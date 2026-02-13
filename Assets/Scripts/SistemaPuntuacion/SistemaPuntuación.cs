@@ -2,12 +2,8 @@ using UnityEngine;
 
 public class SistemaPuntuacion : MonoBehaviour
 {
-    public static int puntuacion;
+    public static int puntuacion = 0;
 
-    public void Awake()
-    {
-        puntuacion = 0;
-    }
     public void Puntuar(int puntos)
     {
         if (puntos <= 9999)
@@ -18,7 +14,7 @@ public class SistemaPuntuacion : MonoBehaviour
 
     public void QuitarPuntos(int puntos)
     {
-        if (puntos <= 9999)
+        if (puntos >= -9999)
         {
             puntuacion -= puntos;
         }
