@@ -19,6 +19,7 @@ public class Findepartida : MonoBehaviour
     {
         Time.timeScale = 1f;                                                  //Reanuda el juego
         SistemaVida.vida = 100;
+        SistemaPuntuacion.puntuacion = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);     //Carga la escena de juego
     }
 
@@ -27,6 +28,7 @@ public class Findepartida : MonoBehaviour
     {
         Time.timeScale = 1f;                    //Reanuda el juego
         SistemaVida.vida = 100;
+        SistemaPuntuacion.puntuacion = 0;
         SceneManager.LoadScene("Main Menu");    //Carga la escena del menú inicial
     }
 }
