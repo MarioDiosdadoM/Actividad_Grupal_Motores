@@ -5,18 +5,23 @@ public class AtaquePersonaje : MonoBehaviour
     [SerializeField] private Camera Camara;
     [SerializeField] Bala m_Bala;
     [SerializeField] Transform m_SpawnBala;
+    [SerializeField] AudioClip clip;
+    private AudioSource audioSource;
     private float distanciaMax = 100f;
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
         //No hacer nada si no se presiona clic
         if (!Input.GetMouseButtonDown(0)) { return; }
         animator.SetTrigger("fireball");
+        audioSource.clip = clip;
+        audioSource.Play();
         //Creamos el rayo desde la camara hasta la posicion del mouse
         Ray ray = Camara.ScreenPointToRay(Input.mousePosition);
 

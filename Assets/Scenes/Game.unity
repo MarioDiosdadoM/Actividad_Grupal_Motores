@@ -8523,7 +8523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Respawn
   puntoRespawn: {fileID: 659082756}
-  hit: {fileID: 8300000, guid: ae2e32a2754eaae42b4168ad148b9d31, type: 3}
+  hit: {fileID: 8300000, guid: 86ac817230fb09e4bb76b80cabe0cbe1, type: 3}
 --- !u!114 &607847026
 MonoBehaviour:
   m_ObjectHideFlags: 0
