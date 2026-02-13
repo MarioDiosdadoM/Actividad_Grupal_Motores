@@ -1,11 +1,20 @@
 using UnityEngine;
+using UnityEngine.Audio;
 public class Enemigo : MonoBehaviour
 {
     [SerializeField] protected float vida = 60;
     [SerializeField] protected int dano = 10;
+    [SerializeField] AudioClip clip;
+    private AudioSource audioSource;
     private GameObject puntos;
     private float tiempo = 2f;
 
+
+    public void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+    }
     protected void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.TryGetComponent<SistemaVida>(out var sitemaVida))
@@ -39,6 +48,7 @@ public class Enemigo : MonoBehaviour
     public virtual void RecibirDano(float dano)
     {
         vida -= dano;
+        audioSource.Play();
         Debug.Log("Enemigo ha recibido " + dano + " de Dano. Le queda " + vida + " de vida.");
         if (vida <= 0) 
         {
