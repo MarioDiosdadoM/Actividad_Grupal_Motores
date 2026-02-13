@@ -6,12 +6,17 @@ public class AtaquePersonaje : MonoBehaviour
     [SerializeField] Bala m_Bala;
     [SerializeField] Transform m_SpawnBala;
     private float distanciaMax = 100f;
+    private Animator animator;
 
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
     private void Update()
     {
         //No hacer nada si no se presiona clic
         if (!Input.GetMouseButtonDown(0)) { return; }
-
+        animator.SetTrigger("fireball");
         //Creamos el rayo desde la camara hasta la posicion del mouse
         Ray ray = Camara.ScreenPointToRay(Input.mousePosition);
 
