@@ -30,7 +30,6 @@ public class AtaquePersonaje : MonoBehaviour
         if(Physics.Raycast(ray, out RaycastHit hit, distanciaMax))
         {
             Vector3 direccion = ray.direction;
-
             Bala bala = PoolManager.Release(m_Bala.gameObject, m_SpawnBala.position, Quaternion.identity).GetComponent<Bala>();
             bala.Inicializar(direccion);
             StartCoroutine(bala.ContarTiempo(bala));
