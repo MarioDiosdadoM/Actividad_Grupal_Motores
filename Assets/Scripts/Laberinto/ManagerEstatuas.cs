@@ -27,7 +27,7 @@ public class ManagerEstatuas : MonoBehaviour
         bossSpawned = true;
         GameObject boss = Instantiate(bossPrefab, puntoAparicion.position, puntoAparicion.rotation);
 
-        if (aviso != null) { aviso.iniciarAviso(); }
+        if (aviso != null) { aviso.IniciarAviso(); }
 
         Patrulla patrulla = boss.GetComponent<Patrulla>();
         patrulla.EstablecerPatrulla(bossPuntosPatrulla);

@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 
 public class Avisoboss : MonoBehaviour
@@ -8,7 +7,7 @@ public class Avisoboss : MonoBehaviour
     public float duracion = 3f;
     public float fade = 1f;
 
-    public void iniciarAviso()
+    public void IniciarAviso()
     {
         StartCoroutine(Temporizador());
     }

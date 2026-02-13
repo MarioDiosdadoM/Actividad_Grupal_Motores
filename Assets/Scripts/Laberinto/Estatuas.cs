@@ -14,7 +14,7 @@ public class Estatuas : MonoBehaviour, Interactuable
     public float temporizador = 3f;
     public MonoBehaviour[] trampa;
     private bool activada = false;
-
+    private GameObject puntos;
     private ManagerEstatuas manager;
     
     void Start()
@@ -41,6 +41,8 @@ public class Estatuas : MonoBehaviour, Interactuable
         {
             StartCoroutine(MostrarAviso("Algo retumba a lo lejos...", temporizador));
         }
+        puntos = GameObject.FindWithTag("Jugador");
+        puntos.GetComponent<SistemaPuntuacion>().Puntuar(50);
     }
 
     public string textoInteraccion()
