@@ -8539,6 +8539,7 @@ MonoBehaviour:
   Camara: {fileID: 518347302}
   m_Bala: {fileID: 2455063146454339823, guid: 031dc221c83b78249b76613d13f1a1f7, type: 3}
   m_SpawnBala: {fileID: 849193229}
+  clip: {fileID: 0}
 --- !u!114 &607847027
 MonoBehaviour:
   m_ObjectHideFlags: 0
