@@ -4,7 +4,7 @@ using UnityEngine;
 public class Bala : MonoBehaviour
 {
     [SerializeField] private float Velocidad = 1;
-    [SerializeField] private float Dano = 10;
+    [SerializeField] private float Dano = 20;
     [SerializeField] private float Tiempo = 5;
 
     private Vector3 Direccion;

@@ -1,8 +1,8 @@
 using UnityEngine;
 public class Enemigo : MonoBehaviour
 {
-    [SerializeField] protected float vida = 100;
-    [SerializeField] protected int dano = 15;
+    [SerializeField] protected float vida = 60;
+    [SerializeField] protected int dano = 10;
     private GameObject puntos;
 
     protected void OnTriggerEnter(Collider col)
