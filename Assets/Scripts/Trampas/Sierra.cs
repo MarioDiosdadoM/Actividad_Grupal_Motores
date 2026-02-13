@@ -8,6 +8,7 @@ public class Sierra : MonoBehaviour, Interfaztrampas
     public float velRotacion = 3f;
     private Vector3 objetivoActual;
     private bool activa = true;
+    private float tiempo = 1.0f;
     void Awake()
     {
         objetivoActual = puntoB.position;
@@ -43,6 +44,23 @@ public class Sierra : MonoBehaviour, Interfaztrampas
             {
                 sistemaPuntos.QuitarPuntos(10);
             }
+        }
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        tiempo -= Time.fixedDeltaTime;
+        if (tiempo < 0.0f)
+        {
+            if (col.gameObject.TryGetComponent<SistemaVida>(out var sitemaVida))
+            {
+                sitemaVida.GetHit(20);
+            }
+            if (col.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+            {
+                sistemaPuntos.QuitarPuntos(10);
+            }
+            tiempo = 1f;
         }
     }
 }

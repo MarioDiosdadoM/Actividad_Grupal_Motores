@@ -4,6 +4,7 @@ public class Enemigo : MonoBehaviour
     [SerializeField] protected float vida = 60;
     [SerializeField] protected int dano = 10;
     private GameObject puntos;
+    private float tiempo = 2f;
 
     protected void OnTriggerEnter(Collider col)
     {
@@ -15,6 +16,23 @@ public class Enemigo : MonoBehaviour
         {
             sistemaPuntos.QuitarPuntos(10);
         }
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        tiempo -= Time.fixedDeltaTime;
+        if (tiempo < 0.0f)
+        {
+            if (col.gameObject.TryGetComponent<SistemaVida>(out var sitemaVida))
+            {
+                sitemaVida.GetHit(dano);
+            }
+            if (col.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+            {
+                sistemaPuntos.QuitarPuntos(10);
+            }
+            tiempo = 2f;
+        }        
     }
 
     //Metodo para que el enemigo pierda vida y vuelva a su punto de spawn al llegar a 0 de vida

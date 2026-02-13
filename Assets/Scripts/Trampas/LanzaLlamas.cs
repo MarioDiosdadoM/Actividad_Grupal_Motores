@@ -8,6 +8,7 @@ public class LanzaLlamas : MonoBehaviour, Interfaztrampas
     public float tiempoEncendido = 2f;
     public float tiempoApagado = 2f;
     private bool activa = true;
+    private float tiempo = 1.0f;
 
     private void Awake()
     {
@@ -65,6 +66,23 @@ public class LanzaLlamas : MonoBehaviour, Interfaztrampas
             {
                 sistemaPuntos.QuitarPuntos(10);
             }
+        }
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        tiempo -= Time.fixedDeltaTime;
+        if (tiempo < 0.0f)
+        {
+            if (col.gameObject.TryGetComponent<SistemaVida>(out var sitemaVida))
+            {
+                sitemaVida.GetHit(20);
+            }
+            if (col.gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+            {
+                sistemaPuntos.QuitarPuntos(10);
+            }
+            tiempo = 1f;
         }
     }
 }
