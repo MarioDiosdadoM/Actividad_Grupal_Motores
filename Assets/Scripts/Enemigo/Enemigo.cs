@@ -23,6 +23,10 @@ public class Enemigo : MonoBehaviour
         Debug.Log("Enemigo ha recibido " + dano + " de Dano. Le queda " + vida + " de vida.");
         if (vida <= 0) 
         {
+            if (gameObject.TryGetComponent<SistemaPuntuacion>(out var sistemaPuntos))
+            {
+                sistemaPuntos.Puntuar(20);
+            }
             Destroy(gameObject);
         }
     }
