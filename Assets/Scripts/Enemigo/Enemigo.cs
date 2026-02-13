@@ -53,7 +53,6 @@ public class Enemigo : MonoBehaviour
         Debug.Log("Enemigo ha recibido " + dano + " de Dano. Le queda " + vida + " de vida.");
         if (vida <= 0) 
         {
-            audioSource.Play();
             puntos = GameObject.FindWithTag("Jugador");
             puntos.GetComponent<SistemaPuntuacion>().Puntuar(50);
             Destroy(gameObject);
